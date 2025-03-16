@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Натисни, щоб почати музику!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Центрує по горизонталі */
+            align-items: center;     /* Центрує по вертикалі */
+            height: 100vh;          /* Висота на весь екран */
+            margin: 0;
+            background: black;
+        }
+
+        button {
+            padding: 500px 400px;
+            font-size: 300px;
+            color: white;
+            background: red;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="playButton">Натисни!</button>
+
+    <script>
+        const button = document.getElementById('playButton');
+        const audio = new Audio('https://files.catbox.moe/zqw1sx.ogg');
+        audio.loop = true; // Безперервне відтворення
+
+        // Завантажуємо аудіо заздалегідь
+        window.addEventListener('load', () => {
+            audio.play().catch(() => {
+                console.log('Очікуємо взаємодію користувача...');
+            });
+        });
+
+        button.addEventListener('click', () => {
+            audio.play().then(() => {
+                console.log('Музика грає!');
+                button.remove(); // Видаляє кнопку після натискання
+            }).catch(err => {
+                console.error('Помилка відтворення:', err);
+            });
+        }, { once: true }); // Працює лише один раз
+    </script>
+</body>
+</html>
