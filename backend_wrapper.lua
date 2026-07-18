@@ -21,7 +21,7 @@ local G = getgenv().G
 --// ============================================
 --// LOAD ORIGINAL BACKEND (finxion.txt)
 --// ============================================
-local BACKEND_URL = "https://pastebin.com/raw/1pwSUHBK" -- твій бекенд
+local BACKEND_URL = "https://github.com/scp103/turbo-garbanzo/blob/main/funxion.lua" -- твій бекенд
 
 local success, backendCode = pcall(function()
     return game:HttpGet(BACKEND_URL)
